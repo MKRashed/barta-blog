@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 
@@ -14,7 +15,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('admin.profile');
+        $user = Auth::user();
+
+        return view('admin.profile', compact('user'));
     }
 
     /**

@@ -122,7 +122,7 @@
                                 </svg>
                             </label>
                         </div>
-                        
+
                     </div>
 
                     <div>
@@ -163,13 +163,13 @@
                             <a
                                 href="profile.html"
                                 class="hover:underline font-semibold line-clamp-1">
-                                Ahmed Shamim Hasan Shaon
+                                {{ $user->first_name ?? '' }} {{ $user->last_name ?? '' }}
                             </a>
 
                             <a
                                 href="profile.html"
                                 class="hover:underline text-sm text-gray-500 line-clamp-1">
-                                @me_shaon
+                                {{ $user->email ?? '' }}
                             </a>
                         </div>
                         <!-- /User Info -->

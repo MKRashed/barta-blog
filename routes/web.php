@@ -18,10 +18,11 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 Route::get('/admin', function () {
     $user = Auth::user();
-    return view('admin.profile', compact('user'));
+    return view('admin.dashboard', compact('user'));
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
