@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+.scrollbar::-webkit-scrollbar-track {
+    @apply bg-gradient-to-b from-rose-100 to-sky-100;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-sky-500 to-sky-700 rounded-full;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-to-b from-sky-400 to-sky-600 rounded-full;
+}
+
+.my-container {
+    @apply max-w-6xl mx-auto px-2;
+}
+
+.btn-1 {
+    @apply flex items-center justify-center gap-2 bg-gradient-to-br from-orange-100 to-sky-100 md:px-4 px-2 pt-2 pb-1 rounded-md font-semibold text-sm border-[2px] border-transparent hover:border-sky-400 hover:text-sky-600 transition-all ease-in-out duration-300 text-sky-900;
+}
+
+.btn-2 {
+    @apply flex gap-2 items-center justify-center bg-gradient-to-br from-sky-900 to-sky-500 md:px-4 px-2 pt-2 pb-1 rounded-md font-semibold text-white text-sm border-[2px] border-transparent hover:border-sky-300 hover:text-sky-200 transition-all ease-in-out duration-300;
+}
