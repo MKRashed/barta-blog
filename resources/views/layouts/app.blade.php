@@ -87,12 +87,15 @@
                                     role="menuitem"
                                     tabindex="-1"
                                     id="user-menu-item-1">Edit Profile</a>
-                                <a
-                                    href="#"
+                                <form
+                                    action="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     role="menuitem"
                                     tabindex="-1"
-                                    id="user-menu-item-2">Sign out</a>
+                                    id="user-menu-item-2" method="POST">
+                                    @csrf
+                                    <button type="submit">Sign out</button>
+                                </form>
                             </div>
                         </div>
                     </div>
