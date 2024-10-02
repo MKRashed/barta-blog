@@ -65,9 +65,9 @@
 
         <!-- Barta Create Post Card -->
         <form
-            method="POST"
-            enctype="multipart/form-data"
+            action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"
             class="bg-white border-2 border-black rounded-lg shadow mx-auto max-w-none px-4 py-5 sm:px-6 space-y-3">
+            @csrf
             <!-- Create Post Card Top -->
             <div>
                 <div class="flex items-start /space-x-3/">
@@ -76,7 +76,7 @@
                         <img
                             class="h-10 w-10 rounded-full object-cover"
                             src="https://avatars.githubusercontent.com/u/49880340?s=400&u=6708342a4a46b7090039269faf8e3d812ac4ca86&v=4"
-                            alt="Ahmed Shamim" />
+                            alt="Rashedul Islam" />
                     </div>
                     <!-- /User Avatar -->
 
@@ -86,7 +86,7 @@
                             class="block w-full p-2 pt-2 text-gray-900 rounded-lg border-none outline-none focus:ring-0 focus:ring-offset-0"
                             name="barta"
                             rows="2"
-                            placeholder="What's going on, Shamim?"></textarea>
+                            placeholder="What's going on, Rashedul Islam?"></textarea>
                     </div>
                 </div>
             </div>

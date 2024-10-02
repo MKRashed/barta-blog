@@ -1,5 +1,10 @@
 <x-guest-layouts>
     <div class="h-full">
+        @if ($errors->has('email'))
+        <div class="text-red-500">
+            {{ $errors->first('email') }}
+        </div>
+        @endif
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form
                 class="space-y-6"
