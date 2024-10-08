@@ -30,24 +30,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'body' => ['required', 'string'],
+        $request->validate([
+            'body' => 'required|string|max:5000',
+            'image' => 'nullable|image|max:2048',
         ]);
 
-        Post::updateOrCreate(
-            [
-                'auth_id' => Auth::user()->id
-            ],
-            [
-                'body' => $validated['body']
-            ]
-        );
+        $imagePath = null;
 
-        return back()
-            ->with([
-                'message' => 'Post successfully posted!',
-            ])
-            ->withInput();
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+        }
+
+        Post::create([
+            'auth_id' => auth()->id(),
+            'body' => $request->input('body'),
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->back()->with('success', 'Post created successfully.');
     }
 
     /**

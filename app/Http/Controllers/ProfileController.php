@@ -73,10 +73,18 @@ class ProfileController extends Controller
                 'max:255',
             ],
             'bio' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ]);
 
+        $imagePath = $user->image;
 
-        $user->update($validated);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('profile', 'public');
+        }
+
+        $user->update($validated + [
+            'image' => $imagePath
+        ]);
 
         return redirect()->back()->with('status', 'Profile updated successfully!');
     }

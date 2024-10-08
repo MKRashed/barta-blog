@@ -25,13 +25,14 @@
                                 <input
                                     class="hidden"
                                     type="file"
-                                    name="avatar"
-                                    id="avatar" />
+                                    name="image"
+                                    id="image" onchange="previewImage(event)" />
                                 <img
                                     class="h-32 w-32 rounded-full"
-                                    src="https://avatars.githubusercontent.com/u/49880340"
-                                    alt="" />
-                                <label for="avatar">
+                                    src="{{ asset('storage/' . $user->image) }}"
+                                    id="preview"
+                                    alt="profile" />
+                                <label for="image">
                                     <div
                                         class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                         Change
@@ -136,5 +137,22 @@
             </div>
         </form>
         <!-- /Profile Edit Form -->
+
+        <script>
+            function previewImage(event) {
+                const file = event.target.files[0];
+                const previewImage = document.getElementById('preview');
+
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
     </div>
 </x-app-layouts>

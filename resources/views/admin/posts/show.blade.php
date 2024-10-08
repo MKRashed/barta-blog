@@ -90,8 +90,13 @@
 
                 <!-- Content -->
                 <div class="py-4 text-gray-700 font-normal">
+                    <img
+                        src="{{ asset('storage/' . $post->image) }}"
+                        class="min-h-auto w-full rounded-lg object-cover max-h-64 md:max-h-72"
+                        alt="" />
                     <p>
                         {{ $post->body ?? ''}}
+                    </p>
                 </div>
 
                 <!-- Date Created & View Stat -->
