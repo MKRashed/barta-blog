@@ -99,7 +99,7 @@
                         aria-labelledby="user-menu-button"
                         tabindex="-1">
                         <a
-                            href="./profile.html"
+                            href="{{ route('profile.index') }}"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                             tabindex="-1"
@@ -200,7 +200,7 @@
                     href="#"
                     class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Create New Post</a>
                 <a
-                    href="./profile.html"
+                    href="{{ route('profile.index') }}"
                     class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">Your Profile</a>
                 <a
                     href="./edit-profile.html"

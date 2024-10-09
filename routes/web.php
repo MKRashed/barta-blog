@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +22,15 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/admin', function () {
+
     $user = Auth::user();
-    return view('admin.dashboard', compact('user'));
+    
+    $posts = Post::query()
+        ->where('auth_id',  $user->id)
+        ->with('postAuth')
+        ->latest()
+        ->get();
+    return view('admin.dashboard', compact('user', 'posts'));
 })->middleware(['auth', 'verified'])->name('admin');
 
 Route::middleware('auth')->group(function () {
@@ -31,4 +40,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('logout', [LoginController::class, 'destroy'])
         ->name('logout');
+    Route::resource('posts', PostController::class);
 });

@@ -29,23 +29,20 @@
                 <div class="flex h-16 justify-between">
                     <div class="flex">
                         <div class="flex flex-shrink-0 items-center">
-                            <a href="/">
+                            <a href="/admin">
                                 <h2 class="font-bold text-2xl">Barta</h2>
                             </a>
                         </div>
                     </div>
-                    <form action="" method="POST" class="flex items-center">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            class="border-2 border-gray-300 bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none" />
-                    </form>
+
+                    @include('admin.search-form')
+
                     <div class="hidden sm:ml-6 sm:flex gap-2 sm:items-center">
-                        <button
+                        <!-- <button
                             type="button"
                             class="text-gray-900 hover:text-white border-2 border-gray-800 hover:bg-gray-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hidden md:block">
                             Create Post
-                        </button>
+                        </button> -->
 
                         <div
                             class="relative ml-3"
@@ -61,7 +58,7 @@
                                     <span class="sr-only">Open user menu</span>
                                     <img
                                         class="h-8 w-8 rounded-full"
-                                        src="https://avatars.githubusercontent.com/u/49880340?s=400&u=6708342a4a46b7090039269faf8e3d812ac4ca86&v=4"
+                                        src="{{ asset('storage/' . auth()->user()->image) }}"
                                         alt="Rashedul Islam" />
                                 </button>
                             </div>
@@ -80,7 +77,13 @@
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     role="menuitem"
                                     tabindex="-1"
-                                    id="user-menu-item-0">Your Profile</a>
+                                    id="user-menu-item-0">News Feeds</a>
+                                <a
+                                    href="{{ route('profile.index') }}"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem"
+                                    tabindex="-1"
+                                    id="user-menu-item-0">Profile</a>
                                 <a
                                     href="{{ route('profile.edit', auth()->user()->id) }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
