@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('auth_id');
             $table->longText('body');
+            $table->text('image');
             $table->timestamps();
         });
     }
