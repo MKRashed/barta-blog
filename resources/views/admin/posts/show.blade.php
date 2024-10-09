@@ -24,13 +24,13 @@
                             <!-- User Info -->
                             <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                                 <a
-                                    href="profile.html"
+                                    href="{{ route('profile.index') }}"
                                     class="hover:underline font-semibold line-clamp-1">
                                     {{ $post->postAuth->fullname ?? ''}}
                                 </a>
 
                                 <a
-                                    href="profile.html"
+                                    href="{{ route('profile.index') }}"
                                     class="hover:underline text-sm text-gray-500 line-clamp-1">
                                     {{ $post->postAuth->email ?? ''}}
                                 </a>
@@ -192,13 +192,13 @@
                                     <!-- User Info -->
                                     <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline font-semibold line-clamp-1">
                                             Al Nahian
                                         </a>
 
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline text-sm text-gray-500 line-clamp-1">
                                             @alnahian2003
                                         </a>
@@ -237,13 +237,13 @@
                                     <!-- User Info -->
                                     <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline font-semibold line-clamp-1">
                                             Bruce Wayne
                                         </a>
 
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline text-sm text-gray-500 line-clamp-1">
                                             @wayne
                                         </a>
@@ -282,13 +282,13 @@
                                     <!-- User Info -->
                                     <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline font-semibold line-clamp-1">
                                             Ahmed Shamim Hasan Shaon
                                         </a>
 
                                         <a
-                                            href="profile.html"
+                                            href="{{ route('profile.index') }}"
                                             class="hover:underline text-sm text-gray-500 line-clamp-1">
                                             @me_shaon
                                         </a>

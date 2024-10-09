@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,9 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        return view('admin.profile', compact('user'));
+        $posts = Post::where('auth_id', $user->id)->latest()->get();
+
+        return view('admin.profile', compact('user', 'posts'));
     }
 
     /**
@@ -54,14 +57,11 @@ class ProfileController extends Controller
         return view('admin.edit-profile', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
 
         $user = User::findOrFail($id);
-
 
         $validated = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
@@ -73,25 +73,23 @@ class ProfileController extends Controller
                 'max:255',
             ],
             'bio' => ['nullable', 'string'],
-            'image' => ['nullable', 'image', 'max:2048'],
         ]);
 
         $imagePath = $user->image;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('profile', 'public');
+            $user->update($validated + [
+                'image' => $imagePath,
+            ]);
+        } else {
+            $user->update($validated);
         }
-
-        $user->update($validated + [
-            'image' => $imagePath
-        ]);
 
         return redirect()->back()->with('status', 'Profile updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         //

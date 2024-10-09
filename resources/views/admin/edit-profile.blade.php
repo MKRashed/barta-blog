@@ -3,7 +3,9 @@
         class="container max-w-xl mx-auto space-y-8 mt-8 px-2 md:px-0 min-h-screen">
         <!-- Profile Edit Form -->
 
-        <form action="{{ route('profile.update', $user->id) }}" method="POST">
+        <form action="{{ route('profile.update', $user->id) }}"
+            enctype="multipart/form-data"
+            method="POST">
             @csrf
             @method('PUT')
             <div class="space-y-12">

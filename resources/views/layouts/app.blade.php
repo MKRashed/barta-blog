@@ -61,7 +61,7 @@
                                     <span class="sr-only">Open user menu</span>
                                     <img
                                         class="h-8 w-8 rounded-full"
-                                        src="https://avatars.githubusercontent.com/u/49880340?s=400&u=6708342a4a46b7090039269faf8e3d812ac4ca86&v=4"
+                                        src="{{ asset('storage/' . auth()->user()->image) }}"
                                         alt="Rashedul Islam" />
                                 </button>
                             </div>
@@ -80,7 +80,13 @@
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     role="menuitem"
                                     tabindex="-1"
-                                    id="user-menu-item-0">Your Profile</a>
+                                    id="user-menu-item-0">News Feeds</a>
+                                <a
+                                    href="{{ route('profile.index') }}"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem"
+                                    tabindex="-1"
+                                    id="user-menu-item-0">Profile</a>
                                 <a
                                     href="{{ route('profile.edit', auth()->user()->id) }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
