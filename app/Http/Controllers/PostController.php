@@ -5,16 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    
+    public function index(Request $request)
     {
-        //
+        $search = $request->input('search');
+
+        $user =  Auth::user();
+
+        $posts = Post::whereHas('user', function ($query) use ($search) {
+            $query->where('first_name', 'like', "%{$search}%")
+                ->orWhere(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        })->paginate(10);
+
+        return view('admin.dashboard', compact('posts', 'user'));
     }
 
     /**
